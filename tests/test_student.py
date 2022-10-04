@@ -13,7 +13,7 @@ def test_new_student():
     assert actual_student.grade == EXPECTED_GRADE
     assert actual_student.classes == EXPECTED_CLASSES
 
-def test_add():
+def test_add_new_classes():
     EXPECTED_NAME = "Yael"
     EXPECTED_GRADE = "Freshman"
     EXPECTED_CLASSES = ["Algebra II", "Art", "Music"]
@@ -21,7 +21,10 @@ def test_add():
     actual_student = Student(EXPECTED_NAME, EXPECTED_GRADE, EXPECTED_CLASSES)
     new_class = "Science"
 
-    #Act
-    new_classes_list = actual_student.add_class(new_class)
+    actual_student.add_class(new_class)
 
-    assert new_classes_list == ["Algebra II", "Art", "Music", "Science"]
+    assert new_class in actual_student.classes
+    assert "Algebra II" in actual_student.classes
+    assert "Art" in actual_student.classes
+    assert "Music" in actual_student.classes
+    assert len(actual_student.classes) == 4
